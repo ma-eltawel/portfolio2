@@ -1,0 +1,691 @@
+/* start global */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+    --main-col: #00b0f0;
+    --text-col: #ededed;
+    --bg-col: #081b28;
+    --sec-bg: #112e42;
+}
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: var(--text-col);
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Fira Sans', sans-serif;
+}
+html{
+    font-size: 62%;
+    overflow-x: hidden;
+}
+body{
+    background-color: var(--bg-col);
+}
+section{
+    min-height: 100vh;
+    padding: 10rem 8% 2rem;
+}
+.head{
+    font-size: 5rem;
+    margin-bottom: 2.88rem;
+    text-align: center;
+}
+.head span{
+    color: var(--main-col);
+}
+/* end global */
+/* start header */
+header{
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 2rem 8%;
+    z-index: 4;
+    transition: 0.4s;
+}
+header.sticky{
+    background-color: var(--bg-col);
+}
+header .logo{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+header #menu-but{
+    display: none;
+    font-size: 3.5rem;
+    cursor: pointer;
+}
+header nav.active{
+    left: 0;
+    transition-delay: 0;
+}
+header nav.active a{
+    transform: translateX(0);
+    transition-delay: 0.25s;
+}
+header nav a{
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: 0.4s;
+}
+header nav a:hover, header nav a.active{
+    color: var(--main-col);
+}
+header .active-nav{
+    position: absolute;
+    top: 0;
+    right: -200%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-col);
+    border-top: 0.12rem solid rgb(0, 0, 0, 0.2);
+    transition: 0.25s ease;
+    transition-delay: 0;
+    z-index: -1;
+}
+header nav.active .active-nav{
+    right: 0;
+    transition-delay: 0.25s;
+}
+/* end header */
+/* start home */
+#home{
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: url(../images/home.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#home .content{
+    max-width: 60rem;
+    z-index: 2;
+}
+#home h1{
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+#home .text{
+    position: relative;
+    width: 32rem;
+}
+#home h3{
+    color: transparent;
+    font-size: 3.2rem;
+    font-weight: 600;
+    background-image: linear-gradient(var(--main-col), var(--main-col));
+    background-repeat: no-repeat;
+    background-position: -32rem 0;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0.8px var(--main-col);
+    animation: homeText 6s linear infinite;
+    animation-delay: 2s;
+}
+#home h3::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-right: 2px solid var(--main-col);
+    z-index: -1;
+    animation: homeCursor 6s linear infinite;
+    animation-delay: 2s;
+}
+#home p{
+    font-size: 1.6rem;
+    margin: 2rem 0 4rem;
+}
+#home .buttons{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 34rem;
+    height: 5rem;
+}
+#home .but, #home .social a{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-col);
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 15rem;
+    height: 100%;
+    letter-spacing: 0.1rem;
+    background-color: var(--main-col);
+    border-radius: 0.8rem;
+    border: 0.2rem solid var(--main-col);
+    overflow: hidden;
+    z-index: 1;
+}
+#home .but:first-child{
+    color: var(--main-col);
+    background-color: transparent;
+}
+#home .but:first-child:hover, #home .social a:hover i{
+    color: var(--bg-col);
+}
+#home .but:hover, #home .social i{
+    color: var(--main-col);
+}
+#home .but::before, #home .social a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--bg-col);
+    z-index: -1;
+    transition: 0.6s;
+}
+#home .but:first-child::before, #home .social a::before{
+    background-color: var(--main-col);
+}
+#home .but:hover::before, #home .social a:hover::before{
+    width: 100%;
+}
+#home .social{
+    position: absolute;
+    display: flex;
+    bottom: 4rem;
+    justify-content: space-between;
+    width: 160px;
+}
+#home .social a{
+    color: var(--main-col);
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+#home .img-hov{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    transition: 4s;
+}
+#home .img-hov:hover{
+    background-color: var(--bg-col);
+    opacity: 0.8;
+}
+/* end home */
+/* start about */
+#about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--sec-bg);
+    padding-bottom: 6rem;
+    text-align: center;
+}
+#about .image{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+}
+#about img{
+    width: 90%;
+    border-radius: 50%;
+    border: 0.2rem solid var(--main-col);
+}
+#about .circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.2rem solid;
+    border-color: var(--sec-bg) var(--main-col);
+    transform: translate(-50%, -50%) rotate(0);
+    animation: spinners 8s linear infinite;
+}
+#about h3{
+    font-size: 2.6rem;
+}
+#about p{
+    font-size: 1.6rem;
+    margin: 2rem 0 2.88rem;
+}
+#about a{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-col);
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 15rem;
+    height: 5rem;
+    letter-spacing: 0.1rem;
+    background-color: var(--main-col);
+    border-radius: 0.8rem;
+    border: 0.2rem solid var(--main-col);
+    overflow: hidden;
+    z-index: 1;
+}
+#about a:hover{
+    color: var(--main-col);
+}
+#about a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--sec-bg);
+    z-index: -1;
+    transition: 0.6s;
+}
+#about a:hover::before{
+    height: 100%;
+}
+/* end about */
+/* start education */
+#education{
+    min-height: auto;
+    padding-bottom: 5rem;
+}
+#education .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+#education .col{
+    flex: 1 1 40rem;
+}
+#education .title{
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem;
+}
+#education .container{
+    border-left: 0.2rem solid var(--main-col);
+}
+#education .box{
+    position: relative;
+    padding-left: 2rem;
+}
+#education .box::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--main-col);
+    border-radius: 50%;
+}
+#education .content{
+    position: relative;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0.6rem;
+    border: 0.2rem solid var(--main-col);
+    overflow: hidden;
+}
+#education .content::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--sec-bg);
+    transition: 0.5s;
+    z-index: -1;
+}
+#education .content:hover:before{
+    width: 100%;
+}
+#education .year{
+    color: var(--main-col);
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+#education .year i{
+    color: var(--main-col);
+    padding-right: 0.5rem;
+}
+#education h3{
+    font-size: 2rem;
+}
+#education p{
+    font-size: 1.6rem;
+    padding-top: 0.5rem;
+}
+/* end education */
+/* start skills */
+#skills{
+    min-height: auto;
+    padding-bottom: 6.8rem;
+    background-color: var(--sec-bg);
+}
+#skills .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+#skills .col{
+    flex: 1 1 40rem;
+}
+#skills .title{
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem;
+}
+#skills .container{
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    border: 0.2rem solid var(--main-col);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    z-index: 1;
+}
+#skills .container:hover::before{
+    width: 100%;
+}
+#skills .container::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--bg-col);
+    z-index: -1;
+    transition: 0.6s;
+}
+#skills .progress{
+    padding: 1rem 0;
+}
+#skills h3{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+}
+#skills .bar{
+    height: 2.5rem;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border-radius: 0.6rem;
+    border: 0.2rem solid var(--main-col);
+}
+#skills .bar span{
+    display: block;
+    height: 100%;
+    background-color: var(--main-col);
+    border-radius: 0.4rem;
+}
+/* end skills */
+/* start contact */
+#contact{
+    min-height: auto;
+    padding-bottom: 6rem;
+}
+#contact form{
+    max-width: 80rem;
+    margin: 0 auto;
+    text-align: center;
+}
+#contact .container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#contact .box{
+    position: relative;
+    width: 48%;
+    margin: 0.8rem 0;
+}
+#contact input, #contact textarea{
+    font-size: 1.6rem;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: transparent;
+    border-radius: 0.6rem;
+    border: 0.2rem solid var(--main-col);
+}
+#contact *::placeholder{
+    color: var(--text-col);
+}
+#contact .message{
+    position: relative;
+    display: flex;
+    margin: 0.8rem 0 2.6rem;
+}
+#contact textarea{
+    resize: none;
+}
+#contact .focus, #contact button::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--sec-bg);
+    transition: 0.5s;
+    z-index: -1;
+}
+#contact .focus{
+    border-radius: 0.6rem;
+}
+#contact input:focus~.focus, #contact input:valid~.focus, #contact textarea:focus~.focus, 
+#contact textarea:valid~.focus, #contact button:hover::before{
+    height: 100%;
+}
+#contact button{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-col);
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 15rem;
+    height: 5rem;
+    letter-spacing: 0.1rem;
+    background-color: var(--main-col);
+    border-radius: 0.8rem;
+    border: 0.2rem solid var(--main-col);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+}
+#contact button:hover{
+    color: var(--main-col);
+}
+#contact button::before{
+    content: '';
+    bottom: 0;
+    background-color: var(--bg-col);
+    transition: 0.6s;
+}
+/* end contact */
+/* start footer */
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 8%;
+    background-color: var(--sec-bg);
+}
+footer p{
+    font-size: 1.6rem;
+}
+footer a{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    background-color: var(--main-col);
+    border-radius: 0.6rem;
+    border: 0.2rem solid var(--main-col);
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+}
+footer a:hover i{
+    color: var(--main-col);
+}
+footer a:hover::before{
+    height: 100%;
+}
+footer a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--sec-bg);
+    z-index: -1;
+    transition: 0.6s;
+}
+footer i{
+    color: var(--bg-col);
+    font-size: 2.4rem;
+}
+/* end footer */
+/* start breakpoints */
+@media (max-width: 1200px){
+    html{
+        font-size: 55%;
+    }
+}
+@media (max-width: 991px){
+    header, footer{
+        padding: 2rem 4%;
+    }
+    section{
+        padding: 10rem 4% 2rem;
+    }
+    #home{
+        padding: 0 4%;
+    }
+}
+@media (max-width: 768px){
+    header{
+        background-color: var(--bg-col);
+    }
+    header #menu-but{
+        display: initial;
+    }
+    header nav{
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background-color: var(--main-col);
+        box-shadow: 0 0.5rem 1rem rgb(0, 0, 0, 0.2);
+        z-index: 1;
+        transition: 0.25s ease;
+        transition-delay: 0.25s;
+    }
+    header nav a{
+        display: block;
+        font-size: 2rem;
+        margin: 2.88rem 0;
+        transform: translateX(-20rem);
+        transition: 0.25s ease;
+        transition-delay: 0;
+    }
+    #home .img-hov{
+        background-color: var(--bg-col);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+@media (max-width: 520px){
+    html{
+        font-size: 50%;
+    }
+}
+@media (max-width: 440px){
+    #home h1{
+        font-size: 5.2rem;
+    }
+    #education{
+        padding: 10rem 4% 5rem 5%;
+    }
+    #contact form .box{
+        width: 100%;
+    }
+    footer{
+        flex-direction: column-reverse;
+    }
+    footer p{
+        margin-top: 2rem;
+        text-align: center;
+    }
+}
+@media (max-width: 360px){
+    #home{
+        justify-content: center;
+    }
+    #home .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #home h1{
+        font-size: 5rem;
+    }
+}
+/* end breakpoints */
+/* start animation */
+@keyframes homeText{
+    0%, 10%, 100%{
+        background-position: -32rem 0;
+    }
+    65%, 85%{
+        background-position: 0 0;
+    }
+}
+@keyframes homeCursor{
+    0%, 10%, 100%{
+        width: 0;
+    }
+    65%, 78%, 85%{
+        width: 100%;
+        opacity: 1;
+    }
+    75%, 80%{
+        opacity: 0;
+    }
+}
+@keyframes spinners{
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+/* end animation */
